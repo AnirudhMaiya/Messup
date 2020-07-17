@@ -1,4 +1,4 @@
-# EMA-messup
+# Messup
 
 ## Introduction
 Introducing linear behaviour in-between training samples to reduce generalization error was the main objective of <a href = 'https://arxiv.org/pdf/1710.09412.pdf'>Mixup <a/> augmentation/regularization. Mixup inturn reduces "undesirable oscillations when predicting outside the training examples". The coefficient of the linear combination is sampled from beta distribution(Convex combination to be precise). 
@@ -65,7 +65,7 @@ Hence Messup is indeed serving its purpose of regularizing and reducing variance
 
 
 ## Future Work
-Messup algorithm has three hyperparameters which are important -- <b> Reset Value, Smoothing Constant and Batch size </b>. Batch size is important because it actually determines how many steps are in an epoch, which in turn affects Reset Value (C). Lower batch sizes will increase the numper of steps in an epoch, this inturn will not serve the purpose of messup i.e. samples encountered in the initial steps will be weighed down drastically when encountering samples in the closing stage of an epoch. Also setting higher batch sizes might be too corrupted to make sense for the model, since it reduces th number of steps. Reset Value suffers the same fate i.e. setting a higher C value has the sam effectof setting a lower batch size, and a lower C value is same as setting a higher batch size. Hence <b>ratio of batch size to C</b> is really important in that regard. Introducing Messup onto word embeddings for NLP tasks has to be investigated. 
+Messup algorithm has three hyperparameters which are important -- <b> Reset Value, Smoothing Constant and Batch size </b>. Batch size is important because it actually determines how many steps are in an epoch, which in turn affects Reset Value (C). Lower batch sizes will increase the numper of steps in an epoch, this inturn will not serve the purpose of messup i.e. samples encountered in the initial steps will be weighed down drastically when encountering samples in the closing stage of an epoch. Also setting higher batch sizes might be too corrupted to make sense for the model, since it reduces th number of steps. Reset Value suffers the same fate i.e. setting a higher C value has the sam effectof setting a lower batch size, and a lower C value is same as setting a higher batch size. Hence <b>ratio of batch size to C</b> is really important in that regard. Introducing Messup onto word embeddings for NLP tasks has to be investigated.
 
 ## References
 
