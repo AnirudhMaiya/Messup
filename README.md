@@ -1,4 +1,4 @@
-# EMA-mess-up
+# EMA-messup
 
 ## Introduction
 Introducing linear behaviour in-between training samples to reduce generalization error was the main objective of <a href = 'https://arxiv.org/pdf/1710.09412.pdf'>Mixup <a/> augmentation/regularization. Mixup inturn reduces "undesirable oscillations when predicting outside the training examples". The coefficient of the linear combination is sampled from beta distribution(Convex combination to be precise). 
@@ -24,6 +24,7 @@ Algorithm <b> CEMA (Compute Exponential Moving Average) </b> is called till the 
 
 ![alt-text-4](images/RecIter.PNG "i4")
 
+Loss in the algorithm is Cross Entropy.
 ## What is Messup doing?
 
 Messup introduces linear behaviour between training samples like Mixup. Mixup converges to ERM strategy when the parameters of beta distribution tends to zero, i.e. the coefficient λ ~ beta(0,0) = 1. Like Mixup, Messup's smoothing constant can also be made to 1. Thereby making network to use ERM strategy.
@@ -60,4 +61,7 @@ To run Messup I use Cifar-10 on ResNet with only Identity skips from <a href = "
 |Messup| ResNet-18| 0.7| 30 | 6.26 |
 |Messup| ResNet-18| 0.7| 80 | 6.09 |
 
+
+## Future Work
+Messup algorithm has three hyperparameters which are important -- <b> Reset Value, Smoothing Constant and Batch size </b>. Batch size is important because it actually determines how many steps are in an epoch, which in turn affects Reset Value (C). Lower batch sizes will increase the numper of steps in an epoch, this inturn will not serve the purpose of messup i.e. samples encountered in the initial steps will be weighed down drastically when encountering samples in the closing stage of an epoch. Also setting higher batch sizes might be too corrupted to make sense for the model, since it reduces th number of steps. Reset Value suffers the same fate i.e. setting a higher C value has the sam effectof setting a lower batch size, and a lower C value is same as setting a higher batch size. Hence <b>ratio of batch size to C</b> is really important in that regard. Introducing Messup onto word embeddings for NLP tasks has to be investigated. 
 
