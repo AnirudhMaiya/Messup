@@ -28,8 +28,15 @@ Algorithm <b> CEMA (Compute Exponential Moving Average) </b> is called till the 
 
 Messup introduces linear behaviour between training samples like Mixup. Mixup converges to ERM strategy when the parameters of beta distribution tends to zero, i.e. the coefficient λ ~ beta(0,0) = 1. Like Mixup, Messup's smoothing constant can also be made to 1. Thereby making network to use ERM strategy.
 
+## Can it compete with Mixup?
 
+Mixup constructs virtual samples in a step itself. Suppose X is a training sample and λ is the coefficent. The Virtual sample is <br>
+λ\*X + (1-λ)\*shuffle(X). But Messup does it across steps since EMA comes into play. So it encounters the same sample from previous step but with reduced weight. This in an intuitive sense lags behind mixup because of this reason. So I never ran the comparision because Mixup would naturally outperform Messup. Although since this is not a time series problem, I think we can shuffle the previously encountered data between steps and increase the robustness.
 
+## Prerequisites
 
+- PyTorch > 1.4
 
+## Experiment
 
+To run Messup I use Cifar-10 on ResNet with only Identity skips from <a href = "https://github.com/kuangliu/pytorch-cifar">this repository</a>.<br>
