@@ -5,7 +5,7 @@ In this repository inspired by mixup, I introduce exponential moving average whi
 
 Concretely the algorithm is as follows,
 
-![alt-text-1](images/MessupAlgorithm.png "i1")
+![alt-text-1](images/MessupAlgorithm.PNG "i1")
 
 ![alt-text-2](images/RemaAlgorithm.png "i2")
 
