@@ -19,5 +19,8 @@ Algorithm <b> REMA (Reset Exponential Moving Average) </b> is called when the cu
 
 Algorithm <b> CEMA (Compute Exponential Moving Average) </b> is called till the current step is not divisble by <b> C </b>. If CEMA doesn't make sense as an algorithm, all its doing is computing the equation iteratively than recursively.
 
+![alt-text-4](images/RecIter.PNG "i4")
+
+
 
 
