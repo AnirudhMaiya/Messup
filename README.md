@@ -39,4 +39,21 @@ Mixup constructs virtual samples in a step itself. Suppose X is a training sampl
 
 ## Experiment
 
-To run Messup I use Cifar-10 on ResNet with only Identity skips from <a href = "https://github.com/kuangliu/pytorch-cifar">this repository</a>.<br>
+To run Messup I use Cifar-10 on ResNet with only Identity skips from <a href = "https://github.com/kuangliu/pytorch-cifar">this repository</a>(PreActResnet18)<br>
+
+## Setup
+
+batch-size - 128
+optimizer - Adam
+step-size - 0.001
+
+## Results
+
+
+| Strategy| Model   | smoothing constant (α) | Reset Cycle (C) | Classification Error  |
+|-------- | ------- | ---------- | ---------  | ---------  |
+|ERM| ResNet-18 | NA | NA |  7.69 |
+|Messup| ResNet-18 | 0.7 | 5 |  6.70 |
+|Messup| ResNet-18| 0.7| 30 | 6.26 |
+|Messup| ResNet-18| 0.7| 80 | 6.09 |
+
