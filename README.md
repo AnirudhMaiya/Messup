@@ -56,12 +56,23 @@ To run Messup I use Cifar-10 on ResNet with only Identity skips from <a href = "
 
 | Strategy| Model   | smoothing constant (α) | Reset Cycle (C) | Classification Error  |
 |-------- | ------- | ---------- | ---------  | ---------  |
-|ERM| ResNet-18 | NA | NA |  7.69 |
-|Messup| ResNet-18 | 0.7 | 5 |  6.70 |
-|Messup| ResNet-18| 0.7| 30 | 6.26 |
-|Messup| ResNet-18| 0.7| 80 | 6.09 |
+|ERM| PreAct ResNet-18 | NA | NA |  7.69 |
+|Messup| PreAct ResNet-18 | 0.7 | 5 |  6.70 |
+|Messup| PreAct ResNet-18| 0.7| 30 | 6.26 |
+|Messup| PreAct ResNet-18| 0.7| 80 | 6.09 |
+
+Hence Messup is indeed serving its purpose of regularizing and reducing variance.
 
 
 ## Future Work
 Messup algorithm has three hyperparameters which are important -- <b> Reset Value, Smoothing Constant and Batch size </b>. Batch size is important because it actually determines how many steps are in an epoch, which in turn affects Reset Value (C). Lower batch sizes will increase the numper of steps in an epoch, this inturn will not serve the purpose of messup i.e. samples encountered in the initial steps will be weighed down drastically when encountering samples in the closing stage of an epoch. Also setting higher batch sizes might be too corrupted to make sense for the model, since it reduces th number of steps. Reset Value suffers the same fate i.e. setting a higher C value has the sam effectof setting a lower batch size, and a lower C value is same as setting a higher batch size. Hence <b>ratio of batch size to C</b> is really important in that regard. Introducing Messup onto word embeddings for NLP tasks has to be investigated. 
 
+## References
+
+- <a href = "https://arxiv.org/pdf/1710.09412.pdf">mixup: Beyond ERM</a>
+
+## Note
+<b>If you find any bug in my implementation of Messup, kindly feel free to drop an issue or email me at maiyaanirudh@gmail.com.</b>
+## To-Do
+- [ ] Pick any NLP problem and use Messup
+- [ ] Inculcate Mixup into Messup if possible
