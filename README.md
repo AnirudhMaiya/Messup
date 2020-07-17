@@ -24,7 +24,7 @@ Algorithm <b> CEMA (Compute Exponential Moving Average) </b> is called till the 
 
 ![alt-text-4](images/RecIter.PNG "i4")
 
-Loss in the algorithm is Cross Entropy.
+Loss in the algorithm is Cross Entropy and labels are all one-hot encoded. 
 ## What is Messup doing?
 
 Messup introduces linear behaviour between training samples like Mixup. Mixup converges to ERM strategy when the parameters of beta distribution tends to zero, i.e. the coefficient λ ~ beta(0,0) = 1. Like Mixup, Messup's smoothing constant can also be made to 1. Thereby making network to use ERM strategy.
