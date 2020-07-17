@@ -1,8 +1,11 @@
 # EMA-mess-up
+
+## Introduction
 Introducing linear behaviour in-between training samples to reduce generalization error was the main objective of <a href = 'https://arxiv.org/pdf/1710.09412.pdf'>Mixup <a/> augmentation/regularization. Mixup inturn reduces "undesirable oscillations when predicting outside the training examples". The coefficient of the linear combination is sampled from beta distribution(Convex combination to be precise). 
 
 In this repository inspired by mixup, I introduce exponential moving average while sampling training samples, in other words samples are mixed and are exponentially weighed down as training progresses.I call this method <b>messup</b>.
 
+## Algorithm
 Concretely the algorithm is as follows,
 
 ![alt-text-1](images/MessupAlgorithm.PNG "i1")
@@ -20,6 +23,12 @@ Algorithm <b> REMA (Reset Exponential Moving Average) </b> is called when the cu
 Algorithm <b> CEMA (Compute Exponential Moving Average) </b> is called till the current step is not divisble by <b> C </b>. If CEMA doesn't make sense as an algorithm, all its doing is computing the equation iteratively than recursively.
 
 ![alt-text-4](images/RecIter.PNG "i4")
+
+## What is Messup doing?
+
+Messup introduces linear behaviour between training samples like Mixup. Mixup converges to ERM strategy when the parameters of beta distribution tends to zero, i.e. the coefficient λ ~ beta(0,0) = 1. Like Mixup, Messup's smoothing constant can also be made to 1. Thereby making network to use ERM strategy.
+
+
 
 
 
