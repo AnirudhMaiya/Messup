@@ -11,3 +11,6 @@ Concretely the algorithm is as follows,
 
 ![alt-text-3](images/CemaAlgorithm.png "i3")
 
+To explain the algorithm, EMA in general weighs down all the training points in any problem exponentially as time progresses. In other words past examples are weighed down exponentially and the most recent training example is assigned with a higher weight. This weight is the smoothing constant.
+
+Like EMA, Messup has a smoothing constant alpha and an extra hyperparameter called <b>Reset Cycle (C)</b>. All <b> C </b> does is reset the weights or reset exponential dependency between training samples at the value time step <b> C </b>. To understand better Messup like an EMA when the value <b>C</b> in the algorithm is equal to int(Number of training samples/Batch size) in a particular epoch. 
