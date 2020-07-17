@@ -16,7 +16,7 @@ Concretely the algorithm is as follows,
 
 To explain the algorithm, EMA in general weighs down all the training points in any problem exponentially as time progresses. In other words past examples are weighed down exponentially and the most recent training example is assigned with a higher weight. This weight is the smoothing constant.
 
-Like EMA, Messup has a smoothing constant alpha and an extra hyperparameter called <b>Reset Cycle (C)</b>. All <b> C </b> does is reset the weights or reset exponential dependency between training samples at the value time step <b> C </b>. To understand better Messup acts like an EMA when the value <br> <b>C</b> = int(Number of training samples/Batch size) for an epoch. So if the value of <b> C = 30 </b>, this means for every 30 steps in an epoch, all the encontered samples' weights are reset.(weight here refers to the smoothing constant!) 
+Like EMA, Messup has a smoothing constant alpha and an extra hyperparameter called <b>Reset Cycle (C)</b>. All <b> C </b> does is reset the weights or reset exponential dependency between training samples at the value time step <b> C </b>. To understand better Messup acts like an EMA when the value <b> C = int(Number of training samples/Batch size)</b> for an epoch. So if the value of <b> C = 30 </b>, this means for every 30 steps in an epoch, all the encontered samples' weights are reset.(weight here refers to the smoothing constant!) 
 
 Algorithm <b> REMA (Reset Exponential Moving Average) </b> is called when the current step is divisible by <b> C </b>.
 
@@ -31,8 +31,7 @@ Messup introduces linear behaviour between training samples like Mixup. Mixup co
 
 ## Can it compete with Mixup?
 
-Mixup constructs virtual samples in a step itself. Suppose X is a training sample and λ is the coefficent. The Virtual sample is <br>
-λ\*X + (1-λ)\*shuffle(X). But Messup does it across steps since EMA comes into play. So it encounters the same sample from previous step but with reduced weight. This in an intuitive sense lags behind mixup because of this reason. So I never ran the comparision because Mixup would naturally outperform Messup. Although since this is not a time series problem, I think we can shuffle the previously encountered data between steps and increase the robustness.
+Mixup constructs virtual samples in a step itself. Suppose X is a training sample and λ is the coefficent. The Virtual sample is <b>λ\*X + (1-λ)\*shuffle(X)</b>. But Messup does it across steps since EMA comes into play. So it encounters the same sample from previous step but with reduced weight. This in an intuitive sense lags behind mixup because of this reason. So I never ran the comparision because Mixup would naturally outperform Messup. Although since this is not a time series problem, I think we can shuffle the previously encountered data between steps and increase the robustness.
 
 ## Prerequisites
 
